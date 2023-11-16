@@ -54,7 +54,7 @@ function sorteio() {
     sortearNumeros();
     mostrarSorteados();
     publicarResultado();
-    btnApostar.disabled = false;
+    
 }
 
 // Função para selecionar os numeros e inserir no Array de apostas
