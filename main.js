@@ -5,6 +5,7 @@ const listaCompleta = document.querySelector(".lista-completa");
 const btnApostar = document.querySelector(".btn-apostar");
 const btnLimpar = document.querySelector(".btn-limpar");
 
+
 // Declaração dos Arrays (vetores)
 const numsSorteados = [];
 const numsApostados = [];
@@ -24,12 +25,14 @@ function getNumber(min, max) {
 
 // Função para inserir valores no array de números sorteados. 
 function sortearNumeros() {
-    for (let i = 0; i < 6; i++) {
-        var numero = Math.floor(getNumber(1, 25));
-        if (!numsSorteados.includes(numero)) {
-            numsSorteados.push(numero);
+    if(numsSorteados.length ===0){
+        for (let i = 0; i < 6; i++) {
+            var numero = Math.floor(getNumber(1, 25));
+            if (!numsSorteados.includes(numero)) {
+                numsSorteados.push(numero);
+            }
+            console.log(numsSorteados);
         }
-        console.log(numsSorteados);
     }
     mostrarSorteados();
     btnSorteio.disabled = true;
@@ -49,16 +52,18 @@ function mostrarSorteados() {
 function sorteio() {
     sortearNumeros();
     mostrarSorteados();
+    publicarResultado();
     btnApostar.disabled = false;
 }
 
 // Função para selecionar os numeros e inserir no Array de apostas
 function selecionarNumeros(numero) {
+    //numsApostados = [];
     if (numsApostados.length >= 0 && numsApostados.length <= 5) {
         numsApostados.push(numero);
         desabilitarNumEscolhido(numero);
     }
-    btnSorteio.disabled = false;
+    btnApostar.disabled = false;
     console.log(numsApostados);
 }
 
@@ -81,13 +86,23 @@ function apurarResultado() {
 
 // Função para gerar o resultado e apresentar acertos na tela.
 function gerarAposta() {
-    var acertos = apurarResultado();
-    document.querySelector(".numero-acertos").innerHTML = `Total de Acertos: ${acertos}`;
-    document.querySelector(".acertados").innerHTML = `Números Acertados: ${numsCertos}`;
-    btnApostar.disabled = true;
+    if(numsApostados.length < 6){
+        alert("Por favor, selecione 6 números!");
+    }else{
+        btnApostar.disabled = true;
+        btnSorteio.disabled = false;
+    }
 }
 
 // Função para limpar a tela.
 function recarregar() {
     window.location.reload(true);
 }
+
+function publicarResultado(){
+    var acertos = apurarResultado();
+    document.querySelector(".numero-acertos").innerHTML = `Total de Acertos: ${acertos}`;
+    document.querySelector(".acertados").innerHTML = `Números Acertados: ${numsCertos}`;
+}
+
+
