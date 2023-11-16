@@ -28,8 +28,6 @@ function sortearNumeros() {
         var numero = Math.floor(getNumber(1, 25));
         if (!numsSorteados.includes(numero)) {
             numsSorteados.push(numero);
-        }else{
-            numsSorteados = numsSorteados.filter(elemento => elemento !== '' && elemento !== null && elemento !== undefined);
         }
         console.log(numsSorteados);
     }
