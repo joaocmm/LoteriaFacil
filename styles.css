@@ -107,8 +107,8 @@ body{
 
 .btn-selecao:disabled{
     cursor: not-allowed;
-    background-color: gold;
-    color: red;
+    background-color: green;
+    color: #fff;
 }
 
 .container-btn-apostar{
