@@ -25,17 +25,18 @@ function getNumber(min, max) {
 
 // Função para inserir valores no array de números sorteados. 
 function sortearNumeros() {
-    if(numsSorteados.length ===0){
-        for (let i = 0; i < 6; i++) {
+    if (numsSorteados.length === 0) {
+        while (numsSorteados.length < 6) {
             var numero = Math.floor(getNumber(1, 25));
             if (!numsSorteados.includes(numero)) {
                 numsSorteados.push(numero);
+            } else {
+                numsSorteados.filter(elemento => elemento !== null);
             }
-            console.log(numsSorteados);
         }
+        mostrarSorteados();
+        btnSorteio.disabled = true;
     }
-    mostrarSorteados();
-    btnSorteio.disabled = true;
 }
 
 // Função para printar na tela os números sorteados.
@@ -86,9 +87,9 @@ function apurarResultado() {
 
 // Função para gerar o resultado e apresentar acertos na tela.
 function gerarAposta() {
-    if(numsApostados.length < 6){
+    if (numsApostados.length < 6) {
         alert("Por favor, selecione 6 números!");
-    }else{
+    } else {
         btnApostar.disabled = true;
         btnSorteio.disabled = false;
     }
@@ -99,10 +100,10 @@ function recarregar() {
     window.location.reload(true);
 }
 
-function publicarResultado(){
+function publicarResultado() {
     var acertos = apurarResultado();
     document.querySelector(".numero-acertos").innerHTML = `Total de Acertos: ${acertos}`;
-    document.querySelector(".acertados").innerHTML = `Números Acertados: ${numsCertos}`;
+    document.querySelector(".acertados").innerHTML = `Acertos: ${numsCertos}`;
 }
 
 
