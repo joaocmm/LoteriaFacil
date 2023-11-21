@@ -4,8 +4,6 @@ const btnSorteio = document.querySelector(".btn-sorteio");
 const listaCompleta = document.querySelector(".lista-completa");
 const btnApostar = document.querySelector(".btn-apostar");
 const btnLimpar = document.querySelector(".btn-limpar");
-const containerSelecao = document.querySelectorAll(".container-selecao")
-
 
 // Declaração dos Arrays (vetores)
 const numsSorteados = [];
@@ -22,7 +20,6 @@ btnLimpar.addEventListener("click", recarregar);
 function getNumber(min, max) {
     return Math.random() * (max - min) + min;
 }
-
 
 // Função para inserir valores no array de números sorteados. 
 function sortearNumeros() {
@@ -55,7 +52,6 @@ function sorteio() {
     sortearNumeros();
     mostrarSorteados();
     publicarResultado();
-
 }
 
 // Função para selecionar os numeros e inserir no Array de apostas
@@ -67,8 +63,6 @@ function selecionarNumeros(numero) {
     }
     if(numsApostados.length == 6){
         btnApostar.disabled = false;
-        desabilitaDivBotoes();
-
     }
     console.log(numsApostados);
 }
@@ -109,11 +103,5 @@ function publicarResultado() {
     var acertos = apurarResultado();
     document.querySelector(".numero-acertos").innerHTML = `Total de Acertos: ${acertos}`;
     document.querySelector(".acertados").innerHTML = `Acertos: ${numsCertos}`;
-}
-
-function desabilitaDivBotoes(){
-    for(i = 0;i < containerSelecao.length;i++){
-        containerSelecao[i].disabled = true;
-    }
 }
 
