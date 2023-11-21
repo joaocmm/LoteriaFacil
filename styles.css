@@ -6,7 +6,7 @@
 }
 
 body{
-    background: url("./img/plano-de-fundo.jpg");
+    background-color: gainsboro;
     height: 100vh;
     display: flex;
     justify-content: center;
