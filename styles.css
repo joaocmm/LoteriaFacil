@@ -99,16 +99,17 @@ body{
     grid-template-columns: 2fr 2fr 2fr 2fr 2fr;
 }
 
+
 .btn-selecao{
     width: 36px; 
     margin: 5px; 
     cursor: pointer;  
 }
 
-.btn-selecao:disabled{
-    cursor: not-allowed;
+.selecionados{
+    cursor:not-allowed;
     background-color: green;
-    color: #fff;
+    color:#fff;
 }
 
 .container-btn-apostar{

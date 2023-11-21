@@ -4,6 +4,7 @@ const btnSorteio = document.querySelector(".btn-sorteio");
 const listaCompleta = document.querySelector(".lista-completa");
 const btnApostar = document.querySelector(".btn-apostar");
 const btnLimpar = document.querySelector(".btn-limpar");
+const containerSelecao = document.querySelectorAll(".container-selecao")
 
 
 // Declaração dos Arrays (vetores)
@@ -54,23 +55,27 @@ function sorteio() {
     sortearNumeros();
     mostrarSorteados();
     publicarResultado();
-    
+
 }
 
 // Função para selecionar os numeros e inserir no Array de apostas
 function selecionarNumeros(numero) {
-    //numsApostados = [];
     if (numsApostados.length >= 0 && numsApostados.length <= 5) {
         numsApostados.push(numero);
         desabilitarNumEscolhido(numero);
+        console.log(numsApostados);
     }
-    btnApostar.disabled = false;
+    if(numsApostados.length == 6){
+        btnApostar.disabled = false;
+        desabilitaDivBotoes();
+
+    }
     console.log(numsApostados);
 }
 
 // Função para desabilitar o número selecionado na tela de apostas.
 function desabilitarNumEscolhido(numero) {
-    document.getElementById("btn-" + numero).disabled = true;
+    document.getElementById("btn-" + numero).classList.add("selecionados");
 }
 
 //Função para comparar arrays
@@ -106,4 +111,9 @@ function publicarResultado() {
     document.querySelector(".acertados").innerHTML = `Acertos: ${numsCertos}`;
 }
 
+function desabilitaDivBotoes(){
+    for(i = 0;i < containerSelecao.length;i++){
+        containerSelecao[i].disabled = true;
+    }
+}
 
